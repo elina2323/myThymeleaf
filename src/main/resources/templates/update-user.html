@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2 align="center" class="bg-dark text-white">Update form</h2>
+    <form action="#"
+          th:action="@{/update/{id}(id=${user.id})}"
+          th:object="${user}"
+          th:method="post">
+
+
+        <div class="form-group">
+            <label for="name" class="bg-dark text-white">Enter name:</label>
+            <input type="text" class="form-control" th:field="*{name}" id="name" placeholder="Enter name">
+            <br/>
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="bg-dark text-white">Enter email:</label>
+            <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Enter email">
+            <br/>
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="bg-dark text-white">Password:</label>
+            <input type="password" class="form-control" th:field="*{password}" id="password" placeholder="Enter password">
+            <br/>
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger"></div>
+        </div>
+
+        <div>
+            <label for="checkbox" class="form-label text-black-50 ">isActive</label>
+            <input type="checkbox" checked id="checkbox">
+        </div>
+
+        <button type="submit" class="btn btn-secondary col-12" value="Update User">Update User</button>
+    </form>
+</div>
+
+</body>
+</html>
+
